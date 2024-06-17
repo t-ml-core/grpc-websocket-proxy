@@ -202,9 +202,10 @@ func (p *Proxy) proxy(w http.ResponseWriter, r *http.Request) {
 	}
 	// If token cookie is present, populate Authorization header from the cookie instead.
 	if cookie, err := r.Cookie(p.tokenCookieName); err == nil {
+		p.logger.Warnln("can find token cookie:", p.tokenCookieName, cookie.Value)
 		request.Header.Set("Authorization", "Bearer "+cookie.Value)
 	} else if p.tokenCookieName != "" {
-		p.logger.Warnln("cannot find token cookie:", p.tokenCookieName, err)
+		p.logger.Warnln("can not find token cookie:", p.tokenCookieName, err)
 	}
 
 	if m := r.URL.Query().Get(p.methodOverrideParam); m != "" {
