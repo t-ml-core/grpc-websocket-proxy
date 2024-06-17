@@ -24,7 +24,7 @@ var MethodOverrideParam = "method"
 var TokenCookieName = "token"
 
 // RequestMutatorFunc can supply an alternate outgoing request.
-type RequestMutatorFunc func(incoming *http.Request, outgoing *http.Request) *http.Request
+type RequestMutatorFunc func(incoming, outgoing *http.Request) *http.Request
 
 // Proxy provides websocket transport upgrade to compatible endpoints.
 type Proxy struct {
@@ -130,9 +130,12 @@ func defaultHeaderForwarder(header string) bool {
 // The cookie name is specified by the TokenCookieName value.
 //
 // example:
-//   Sec-Websocket-Protocol: Bearer, foobar
+//
+//	Sec-Websocket-Protocol: Bearer, foobar
+//
 // is converted to:
-//   Authorization: Bearer foobar
+//
+//	Authorization: Bearer foobar
 //
 // Method can be overwritten with the MethodOverrideParam get parameter in the requested URL
 func WebsocketProxy(h http.Handler, opts ...Option) http.Handler {
@@ -341,12 +344,15 @@ func transformSubProtocolHeader(header string) string {
 func (w *inMemoryResponseWriter) Write(b []byte) (int, error) {
 	return w.Writer.Write(b)
 }
+
 func (w *inMemoryResponseWriter) Header() http.Header {
 	return w.header
 }
+
 func (w *inMemoryResponseWriter) WriteHeader(code int) {
 	w.code = code
 }
+
 func (w *inMemoryResponseWriter) CloseNotify() <-chan bool {
 	return w.closed
 }

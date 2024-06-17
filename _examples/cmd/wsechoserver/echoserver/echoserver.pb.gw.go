@@ -23,11 +23,13 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-var _ codes.Code
-var _ io.Reader
-var _ status.Status
-var _ = runtime.String
-var _ = utilities.NewDoubleArray
+var (
+	_ codes.Code
+	_ io.Reader
+	_ status.Status
+	_ = runtime.String
+	_ = utilities.NewDoubleArray
+)
 
 func request_EchoService_Echo_0(ctx context.Context, marshaler runtime.Marshaler, client EchoServiceClient, req *http.Request, pathParams map[string]string) (EchoService_EchoClient, runtime.ServerMetadata, error) {
 	var metadata runtime.ServerMetadata
@@ -95,7 +97,6 @@ func request_EchoService_Stream_0(ctx context.Context, marshaler runtime.Marshal
 	}
 	metadata.HeaderMD = header
 	return stream, metadata, nil
-
 }
 
 func request_EchoService_Heartbeats_0(ctx context.Context, marshaler runtime.Marshaler, client EchoServiceClient, req *http.Request, pathParams map[string]string) (EchoService_HeartbeatsClient, runtime.ServerMetadata, error) {
@@ -205,7 +206,6 @@ func RegisterEchoServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn
 		}
 
 		forward_EchoService_Echo_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
-
 	})
 
 	mux.Handle("GET", pattern_EchoService_Stream_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
@@ -233,7 +233,6 @@ func RegisterEchoServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn
 		}
 
 		forward_EchoService_Stream_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
-
 	})
 
 	mux.Handle("POST", pattern_EchoService_Heartbeats_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
@@ -261,7 +260,6 @@ func RegisterEchoServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn
 		}
 
 		forward_EchoService_Heartbeats_0(ctx, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
-
 	})
 
 	return nil

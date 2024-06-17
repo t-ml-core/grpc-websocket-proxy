@@ -6,9 +6,11 @@
 Package echoserver is a generated protocol buffer package.
 
 It is generated from these files:
+
 	echoserver.proto
 
 It has these top-level messages:
+
 	EchoRequest
 	EchoResponse
 	Heartbeat
@@ -16,10 +18,12 @@ It has these top-level messages:
 */
 package echoserver
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
-import _ "google.golang.org/genproto/googleapis/api/annotations"
+import (
+	proto "github.com/golang/protobuf/proto"
+	fmt "fmt"
+	math "math"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
+)
 
 import (
 	context "golang.org/x/net/context"
@@ -27,9 +31,11 @@ import (
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
-var _ = proto.Marshal
-var _ = fmt.Errorf
-var _ = math.Inf
+var (
+	_ = proto.Marshal
+	_ = fmt.Errorf
+	_ = math.Inf
+)
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the proto package it is being compiled against.
@@ -48,6 +54,7 @@ var Heartbeat_Status_name = map[int32]string{
 	0: "UNKNOWN",
 	1: "OK",
 }
+
 var Heartbeat_Status_value = map[string]int32{
 	"UNKNOWN": 0,
 	"OK":      1,
@@ -106,8 +113,7 @@ func (m *Heartbeat) GetStatus() Heartbeat_Status {
 	return Heartbeat_UNKNOWN
 }
 
-type Empty struct {
-}
+type Empty struct{}
 
 func (m *Empty) Reset()                    { *m = Empty{} }
 func (m *Empty) String() string            { return proto.CompactTextString(m) }
@@ -123,8 +129,10 @@ func init() {
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
-var _ context.Context
-var _ grpc.ClientConn
+var (
+	_ context.Context
+	_ grpc.ClientConn
+)
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.

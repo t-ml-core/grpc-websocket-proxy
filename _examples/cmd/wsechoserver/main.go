@@ -12,8 +12,8 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"github.com/tmc/grpc-websocket-proxy/examples/cmd/wsechoserver/echoserver"
-	"github.com/tmc/grpc-websocket-proxy/wsproxy"
+	"github.com/t-ml-core/grpc-websocket-proxy/examples/cmd/wsechoserver/echoserver"
+	"github.com/t-ml-core/grpc-websocket-proxy/wsproxy"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 )
@@ -58,7 +58,6 @@ func listenGRPC(listenAddr string) error {
 		}
 	}()
 	return nil
-
 }
 
 func main() {
